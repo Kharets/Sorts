@@ -11,14 +11,17 @@ namespace Консольное1
         static int Count_For = 0;
         static int Count_If = 0;
 
-        static int R = 10;
+        static int R = 100;
+        static int M = 0;
 
-        static int[] Mass = new int[10];
+        static int[] Mass = new int[1000];
 
-        static int[] Mass1 = new int[10];
-        static int[] Mass2 = new int[10];
-        static int[] Mass2_1 = new int[10];
-        static int[] Mass3 = new int[10];
+        static int[] Mass1 = new int[1000];
+        static int[] Mass2 = new int[1000];
+        static int[] Mass2_1 = new int[1000];
+        static int[] Mass3 = new int[1000];
+
+
 
 
 
@@ -28,17 +31,18 @@ namespace Консольное1
             Count_For = 0;
             Count_If = 0;
 
-            for (int i = 0; i < Mass1.Length; i++)
+            if (M == 0)
+                for (int i = 0; i < Mass1.Length; i++)
                 Mass[i] = Mass1[i];
-
-            //for (int i = 0; i < Mass2.Length; i++)
-            //    Mass[i] = Mass2[i];
-
-            //for (int i = 0; i < Mass2_1.Length; i++)
-            //    Mass[i] = Mass2_1[i];
-
-            //for (int i = 0; i < Mass3.Length; i++)
-            //    Mass[i] = Mass3[i];
+            if (M == 1)
+                for (int i = 0; i < Mass2.Length; i++)
+                Mass[i] = Mass2[i];
+            if (M == 2)
+                for (int i = 0; i < Mass2_1.Length; i++)
+                Mass[i] = Mass2_1[i];
+            if (M == 3)
+                for (int i = 0; i < Mass3.Length; i++)
+                Mass[i] = Mass3[i];
         }
 
 
@@ -50,26 +54,33 @@ namespace Консольное1
             for (int i = 0; i < Mass1.Length; i++)
                 Console.Write(" " + Mass1[i]);
 
-            Console.WriteLine("\n \n Mass2 ▼");
+            Console.WriteLine(" \n Mass2 ▼");
             for (int i = 0; i < Mass2.Length; i++)
                 Console.Write(" " + Mass2[i]);
 
-            Console.WriteLine("\n \n Mass2_1 ▼");
+            Console.WriteLine(" \n Mass2_1 ▼");
             for (int i = 0; i < Mass2_1.Length; i++)
                 Console.Write(" " + Mass2_1[i]);
 
-            Console.WriteLine("\n \n Mass3 ▼");
+            Console.WriteLine(" \n Mass3 ▼");
             for (int i = 0; i < Mass3.Length; i++)
                 Console.Write(" " + Mass3[i]);
             Console.WriteLine();
 
+            
+            while (M-4 < 0)
+            {
+                Bubble();
+                Bubble_Flag();
+                Shaker();
+                Insertion();
+                Shell();
+                QSort();
 
+                M++;
 
-            Bubble();
-            Bubble_Flag();
-            Shaker();
-            Insertion();
-            Shell();
+                Console.WriteLine("\n ↑↑↑↑↑↑↑↑↑↑↑ Mass " + M);
+            }
 
 
 
@@ -123,10 +134,10 @@ namespace Консольное1
                     }
                 }
 
-            Console.WriteLine("\n Bubble ▼");
-            for (int i = 0; i < Mass.Length; i++)
-                Console.Write(" " + Mass[i]);
-            Console.WriteLine("\n if = " + Count_If + " for = " + Count_For);
+            Console.Write("\n Bubble ▼");
+            //for (int i = 0; i < Mass.Length; i++)
+            //    Console.Write(" " + Mass[i]);
+            Console.Write("if = " + Count_If + " for = " + Count_For);
         }
 
 
@@ -160,10 +171,10 @@ namespace Консольное1
                 }
             }
 
-            Console.WriteLine("\n Bubble_Flag ▼");
-            for (int i = 0; i < Mass.Length; i++)
-                Console.Write(" " + Mass[i]);
-            Console.WriteLine("\n if = " + Count_If + " for = " + Count_For);
+            Console.Write("\n Bubble_Flag ▼");
+            //for (int i = 0; i < Mass.Length; i++)
+            //    Console.Write(" " + Mass[i]);
+            Console.Write("if = " + Count_If + " for = " + Count_For);
         }
 
         static void Shaker()
@@ -218,10 +229,10 @@ namespace Консольное1
                 }
             }
 
-            Console.WriteLine("\n Shaker ▼");
-            for (int i = 0; i < Mass.Length; i++)
-                Console.Write(" " + Mass[i]);
-            Console.WriteLine("\n if = " + Count_If + " for = " + Count_For);
+            Console.Write("\n Shaker ▼");
+            //for (int i = 0; i < Mass.Length; i++)
+            //    Console.Write(" " + Mass[i]);
+            Console.Write("if = " + Count_If + " for = " + Count_For);
         }
 
         static void Insertion()
@@ -245,10 +256,10 @@ namespace Консольное1
                         break;
                 }       
 
-            Console.WriteLine("\n Insertion ▼");
-            for (int i = 0; i < Mass.Length; i++)
-                Console.Write(" " + Mass[i]);
-            Console.WriteLine("\n if = " + Count_If + " for = " + Count_For);
+            Console.Write("\n Insertion ▼");
+            //for (int i = 0; i < Mass.Length; i++)
+            //    Console.Write(" " + Mass[i]);
+            Console.Write("if = " + Count_If + " for = " + Count_For);
         }
 
         static void Shell()
@@ -290,10 +301,69 @@ namespace Консольное1
                 }
             }
 
-            Console.WriteLine("\n Shell ▼");
-            for (int i = 0; i < Mass.Length; i++)
-                Console.Write(" " + Mass[i]);
-            Console.WriteLine("\n if = " + Count_If + " for = " + Count_For);
+            Console.Write("\n Shell ▼");
+            //for (int i = 0; i < Mass.Length; i++)
+            //    Console.Write(" " + Mass[i]);
+            Console.Write("if = " + Count_If + " for = " + Count_For);
+        }
+
+        static void QSort()
+        {
+            Clear();           
+
+            int[] sortedArray = QuickSort(Mass, 0, Mass.Length - 1);
+
+            Console.Write("\n QSort ▼");
+            //for (int i = 0; i < Mass.Length; i++)
+            //    Console.Write(" " + Mass[i]);
+            Console.Write("if = " + Count_If + " for = " + Count_For);            
+        }
+
+        private static int[] QuickSort(int[] array, int minIndex, int maxIndex)
+        {
+            if (minIndex >= maxIndex)
+            {
+                Count_If++;
+                return array;
+            }
+
+            int pivotIndex = GetPivotIndex(array, minIndex, maxIndex);
+
+            QuickSort(array, minIndex, pivotIndex - 1);
+            QuickSort(array, pivotIndex + 1, maxIndex);
+
+            return array;
+        }
+
+        private static int GetPivotIndex(int[] array, int minIndex, int maxIndex)
+        {
+            int pivot = minIndex - 1;
+
+            //Random rand = new Random();
+            //int OpEl = rand.Next(0, Mass.Length - 1);
+
+            for (int i = minIndex; i <= maxIndex; i++)
+            {
+                Count_For++;
+                if (array[i] < array[maxIndex])
+                {
+                    Count_If++;
+                    pivot++;
+                    Swap(ref array[pivot], ref array[i]);
+                }
+            }
+
+            pivot++;
+            Swap(ref array[pivot], ref array[maxIndex]);
+
+            return pivot;
+        }
+
+        private static void Swap(ref int leftItem, ref int rightItem)
+        {
+            var temp = leftItem;
+            leftItem = rightItem;
+            rightItem = temp;
         }
     }
 }
